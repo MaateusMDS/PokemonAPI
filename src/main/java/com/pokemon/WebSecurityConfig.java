@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityCofig {
+public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity https) throws Exception {
@@ -21,6 +21,7 @@ public class WebSecurityCofig {
         return https.build();
     }
 
+    @Bean
     public UserDetailsService userDetailsService(){
         UserDetails user = User.withDefaultPasswordEncoder().username("admin").password("123").roles("ADM").build();
         return new InMemoryUserDetailsManager(user);

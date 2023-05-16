@@ -1,4 +1,10 @@
 package com.pokemon.repository;
 
-public class PokemonRepository {
+import com.pokemon.model.Pokemon;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PokemonRepository extends JpaRepository<Pokemon, Long> {
+    Page<Pokemon> findAllByAtivoTrue(Pageable pageable);
 }

@@ -1,6 +1,7 @@
 package com.pokemon.controller;
 
 import com.pokemon.model.Pokemon;
+import com.pokemon.model.dados.AtualizarPokemon;
 import com.pokemon.model.dados.InserirPokemon;
 import com.pokemon.model.dados.ListarPokemon;
 import com.pokemon.repository.PokemonRepository;
@@ -23,6 +24,14 @@ public class Controller {
     @Transactional
     public void inserirPokemon(@RequestBody @Valid InserirPokemon dados){
         repository.save(new Pokemon(dados));
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public void atualizarPokemon(@PathVariable Long id, @RequestBody @Valid AtualizarPokemon dados){
+        var pokemon = new Pokemon();
+        pokemon = repository.getReferenceById(id);
+        pokemon.atualizarJogo(dados);
     }
 
     @GetMapping

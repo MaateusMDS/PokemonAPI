@@ -1,5 +1,6 @@
 package com.pokemon.model;
 
+import com.pokemon.model.dados.AtualizarPokemon;
 import com.pokemon.model.dados.InserirPokemon;
 import jakarta.persistence.*;
 
@@ -47,6 +48,24 @@ public class Pokemon {
     }
 
     public void apagarPokemon(){this.ativo = false;}
+
+    public void atualizarJogo(AtualizarPokemon dados) {
+        if (dados.nome() != null){
+            this.nome = dados.nome();
+        }
+
+        if (dados.altura() != 0){
+            this.altura = dados.altura();
+        }
+
+        if (dados.peso() != 0){
+            this.peso = dados.peso();
+        }
+
+        if (dados.habilidade() != null){
+            this.habilidade = dados.habilidade();
+        }
+    }
 
     public long getId() {
         return id;

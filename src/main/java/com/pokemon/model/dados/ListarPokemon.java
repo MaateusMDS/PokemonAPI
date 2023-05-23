@@ -11,7 +11,7 @@ public record ListarPokemon(
         this (
         pokemon.getId(),
         pokemon.getNome(),
-        pokemon.getHabilidade()
+        pokemon.getCategoria().name()
         );
     }
 }
